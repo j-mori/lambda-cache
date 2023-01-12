@@ -5,11 +5,10 @@ on:
     tags:
       - 'v*'
 
-permissions: read-all|write-all
-
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions: read-all|write-all
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
