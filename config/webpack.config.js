@@ -6,7 +6,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist/umd'),
     filename: 'index.js',
-    library: 'exampleTypescriptPackage',
+    library: 'lambda-cache',
     libraryTarget: 'umd',
     globalObject: 'this',
   },
@@ -26,5 +26,8 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js', '.tsx', '.jsx'],
+    fallback: {
+      fs: false,
+    },
   },
 }

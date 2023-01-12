@@ -1,3 +1,3 @@
-import { Num } from './Num'
+import { Cache } from './Cache'
 
-export { Num }
+export { Cache }
