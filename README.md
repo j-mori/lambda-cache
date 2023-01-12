@@ -1,6 +1,6 @@
 # lambda-cache
 
-A simple, fast, cheap and lightweight dependency-less, cache system for AWS Lambda functions, based on writing to files in the ["/tmp" folder](https://aws.amazon.com/it/blogs/aws/aws-lambda-now-supports-up-to-10-gb-ephemeral-storage/). It allows you to set a time-to-live (TTL) for cache keys and invalidate the cache.
+A simple, fast, cheap, lightweight dependency-less and cross execution cache system for AWS Lambda functions, based on writing to files in the ["/tmp" folder](https://aws.amazon.com/it/blogs/aws/aws-lambda-now-supports-up-to-10-gb-ephemeral-storage/). It allows you to set a time-to-live (TTL) for cache keys and invalidate the cache.
 
 ## Installation
 
@@ -33,13 +33,11 @@ cache.clear();
 
 ## API
 
-### `new Cache(path: string, ttl?: number)`
+### `new Cache(path?: string)`
 
 Creates a new cache instance that stores the data in the specified path.
 
-- `path`: the path where the cache files will be stored.
-- `ttl` (optional): the time to live for cache entries in milliseconds.
-
+- `path` (optional): the path where the cache files will be stored.
 ### `cache.set(key: string, value: any, ttl?: number)`
 
 Stores a value in the cache.
