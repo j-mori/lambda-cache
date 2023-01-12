@@ -5,7 +5,8 @@ jest.mock('fs', () => ({
   readFileSync: jest.fn(),
   writeFileSync: jest.fn(),
   unlinkSync: jest.fn(),
-  readdirSync: jest.fn()
+  readdirSync: jest.fn(),
+  mkdir: jest.fn(),
 }));
 
 describe('Cache', () => {
