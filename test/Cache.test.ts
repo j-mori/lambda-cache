@@ -12,11 +12,13 @@ jest.mock('fs', () => ({
 describe('Cache', () => {
   let cache: Cache;
   beforeEach(() => {
-    cache = new Cache('/tmp/');
+    cache = new Cache();
+  });
+  beforeEach(() => {
+    cache.clear();
   });
 
   test('should set and get a value', () => {
-    (fs.readFileSync as jest.Mock).mockReturnValueOnce(JSON.stringify({ value: 'value', expiresAt: 0 }));
     cache.set('key', 'value');
     expect(cache.get<string>('key')).toBe('value');
   });
@@ -29,15 +31,13 @@ describe('Cache', () => {
 
   test('should clear the cache', () => {
     cache.set('key1', 'value1');
-    cache.set('key2', 'value2');
-    (fs.readdirSync as jest.Mock).mockReturnValueOnce(['key1.json', 'key2.json']);
-    cache.clear();
+    cache.set('key2', 'value2');cache.clear();
     expect(cache.get<string>('key1')).toBe(undefined);
     expect(cache.get<string>('key2')).toBe(undefined);
   });
 
   test('should expire a value', () => {
-    (fs.readFileSync as jest.Mock).mockReturnValueOnce(JSON.stringify({ value: 'value', expiresAt: Date.now() - 1000 }));
+    cache.set('key','value',-10)
     expect(cache.get<string>('key')).toBe(undefined);
   });
 });
