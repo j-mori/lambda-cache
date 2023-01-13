@@ -6,7 +6,7 @@ interface ICacheItem<T> {
 }
 
 export class Cache {
-  private readonly cache: { [key: string]: ICacheItem<unknown> } = {}
+  private cache: { [key: string]: ICacheItem<unknown> } = {}
   private readonly basePath: string
 
   constructor(basePath = '/tmp/cache') {
@@ -38,9 +38,8 @@ export class Cache {
   }
 
   public clear(): void {
-    for (const key of Object.keys(this.cache)) {
-      this.delete(key)
-    }
+    this.removeFolder()
+    this.cache = {}
   }
 
   private hasExpired(timestamp: number): boolean {
@@ -70,6 +69,10 @@ export class Cache {
 
   private unlinkFile(key: string): void {
     fs.unlinkSync(`${this.basePath}/${key}.json`)
+  }
+
+  private removeFolder(): void {
+    fs.rmSync(this.basePath, { recursive: true, force: true })
   }
 
   private removeTrailingSlash(str: string): string {
