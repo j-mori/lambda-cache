@@ -44,7 +44,7 @@ Stores a value in the cache.
 
 - `key`: the key used to store and retrieve the value.
 - `value`: the value to store.
-- `ttl` (optional): the time to live for this cache entry in milliseconds. If not provided, the default value set in the constructor will be used.
+- `ttl` (optional): the time to live for this cache entry in seconds. If not provided, the key won't expire.
 
 ### `cache.get(key: string)`
 
