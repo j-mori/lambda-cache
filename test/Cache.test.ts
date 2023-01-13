@@ -6,6 +6,7 @@ jest.mock('fs', () => ({
   writeFileSync: jest.fn(),
   unlinkSync: jest.fn(),
   readdirSync: jest.fn(),
+  rmSync: jest.fn(),
   mkdir: jest.fn(),
 }));
 
