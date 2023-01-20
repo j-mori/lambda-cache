@@ -6,7 +6,7 @@ A simple, fast, cheap, lightweight dependency-less and cross execution cache sys
 
 You can install the package via npm:
 ```bash
-npm install lambda-cache
+npm install @j-mori/lambda-cache
 ```
 
 ## Usage
