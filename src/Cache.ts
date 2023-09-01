@@ -1,4 +1,6 @@
 import * as fs from 'fs'
+import * as path from 'path';
+
 
 interface ICacheItem<T> {
   value: T
@@ -60,7 +62,7 @@ export class Cache {
 
   private readFromFile<T>(key: string): ICacheItem<T> | undefined {
     try {
-      const data = fs.readFileSync(`${this.basePath}/${key}.json`, 'utf8')
+      const data = fs.readFileSync(path.join(this.basePath, `${key}.json`), 'utf8')
       return JSON.parse(data)
     } catch (error) {
       return
