@@ -15,7 +15,7 @@ describe('Cache', () => {
   beforeEach(() => {
     cache = new Cache();
   });
-  beforeEach(() => {
+  afterEach(() => {
     cache.clear();
   });
 
